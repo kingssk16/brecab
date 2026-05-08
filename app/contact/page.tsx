@@ -20,7 +20,20 @@ export default function ContactPage() {
               Berätta vad som ska flyttas, formas eller hållas öppet.
             </h1>
             <div className="reveal mt-10 space-y-4 text-sm text-muted-foreground">
-              <p className="flex items-center gap-3"><Phone size={18} className="text-primary" /> För personlig rådgivning och kostnadsförslag</p>
+              <a
+                href="tel:+46702532035"
+                className="flex items-center gap-3 transition hover:text-primary"
+              >
+                <Phone size={18} className="shrink-0 text-primary" />
+                Anders Eriksson, +46 70-253 20 35
+              </a>
+              <a
+                href="tel:+46705466968"
+                className="flex items-center gap-3 transition hover:text-primary"
+              >
+                <Phone size={18} className="shrink-0 text-primary" />
+                Peter Eriksson, +46 70-546 69 68
+              </a>
               <p className="flex items-center gap-3"><Mail size={18} className="text-primary" /> info@brecab.se</p>
               <p className="flex items-center gap-3"><MapPin size={18} className="text-primary" /> Boden</p>
             </div>

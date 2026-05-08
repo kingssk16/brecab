@@ -44,91 +44,120 @@ type Season = {
   jobs: Job[];
 };
 
-const winterJobs: Job[] = [
-  {
+const jobCatalog = {
+  snowPlowing: {
     title: "Snöplogning",
     text: "Vägar, planer, infarter och fastighetsytor hålls öppna med rätt maskin för förhållandet.",
     image: "/projects/loader-front.jpeg",
     icon: Snowflake
   },
-  {
-    title: "Halkbekämpning",
+  sanding: {
+    title: "Halkbekämpning / sandning",
     text: "Sandning och beredskap när temperatur och nederbörd gör ytor osäkra.",
-    image: "/projects/snow-road.jpeg",
+    image: "/projects/halkbekampning.png",
     icon: Shovel
   },
-  {
+  snowTransport: {
     title: "Snötransport",
     text: "Flytt av snömassor och tydlig logistik när ytor måste frigöras snabbt.",
-    image: "/projects/loader-dusk.jpeg",
+    image: "/projects/sno-transport.png",
     icon: Route
-  }
-];
-
-const springJobs: Job[] = [
-  {
-    title: "Sopning",
-    text: "Rengöring efter vinter, sand och grus på ytor där ordning och framkomlighet behövs.",
-    image: "/projects/blade-cabin.jpeg",
-    icon: Brush
   },
-  {
-    title: "Garageinfarter",
-    text: "Ombyggnad, urgrävning och förberedande markarbete för starka infarter.",
-    image: "/projects/loader-side.jpeg",
-    icon: Mountain
-  },
-  {
-    title: "Dränering",
-    text: "Markförberedelser och vattenhantering för torrare och mer hållbara ytor.",
-    image: "/projects/loader-side-alt.jpeg",
+  grading: {
+    title: "Hyvling",
+    text: "Jämning av vintervägar och packade snöytor för bättre framkomlighet och säkrare underlag.",
+    image: "/projects/hyvling.png",
     icon: Shovel
-  }
-];
-
-const summerJobs: Job[] = [
-  {
-    title: "Markanläggning",
-    text: "Grusytor, gräsytor, plattläggning och kantsten där finish och funktion ska möta varandra.",
-    image: "/projects/loader-side.jpeg",
-    icon: Mountain
   },
-  {
-    title: "Lekparksbyggnation",
-    text: "Noggranna marklager och ytor där säkerhet, dränering och form spelar roll.",
-    image: "/projects/field-clear.jpeg",
-    icon: Trees
-  },
-  {
-    title: "Gräsklippning",
-    text: "Skötsel av större grönytor för kommuner, företag och bostadsrättsföreningar.",
-    image: "/projects/winter-field.jpeg",
-    icon: Brush
-  }
-];
-
-const autumnJobs: Job[] = [
-  {
-    title: "Grusytor",
-    text: "Justering, materialflytt och bärlager innan frost och vinterdrift tar vid.",
-    image: "/projects/l60h-detail.jpeg",
-    icon: Mountain
-  },
-  {
-    title: "Transport",
-    text: "Materialflöden och massor flyttas med tydlig planering så arbetsplatsen håller rytmen.",
-    image: "/projects/loader-rear.jpeg",
-    icon: Route
-  },
-  {
+  winterReadiness: {
     title: "Vinterberedskap",
     text: "Genomgång av uppdrag, ytor och prioriteringar innan första snön kommer.",
     image: "/projects/loader-dusk.jpeg",
     icon: Snowflake
+  },
+  sweeping: {
+    title: "Sopning",
+    text: "Rengöring efter vinter, sand och grus på ytor där ordning och framkomlighet behövs.",
+    image: "/projects/sopning.png",
+    icon: Brush
+  },
+  driveways: {
+    title: "Garageinfarter",
+    text: "Ombyggnad, urgrävning och förberedande markarbete för starka infarter.",
+    image: "/projects/uppfart.png",
+    icon: Mountain
+  },
+  drainage: {
+    title: "Dränering",
+    text: "Markförberedelser och vattenhantering för torrare och mer hållbara ytor.",
+    image: "/projects/dranering.png",
+    icon: Shovel
+  },
+  earthworks: {
+    title: "Markanläggning",
+    text: "Grusytor, gräsytor, plattläggning och kantsten där finish och funktion ska möta varandra.",
+    image: "/projects/markanlaggning.png",
+    icon: Mountain
+  },
+  playgrounds: {
+    title: "Lekparksbyggnationer",
+    text: "Noggranna marklager och ytor där säkerhet, dränering och form spelar roll.",
+    image: "/projects/lekplatsbyggnationer.png",
+    icon: Trees
+  },
+  mowing: {
+    title: "Gräsklippning",
+    text: "Skötsel av större grönytor för kommuner, företag och bostadsrättsföreningar.",
+    image: "/projects/grasklippning.png",
+    icon: Brush
+  },
+  gravelSurfaces: {
+    title: "Grusytor",
+    text: "Justering, materialflytt och bärlager för ytor som ska hålla rätt nivå och funktion.",
+    image: "/projects/grusytor.png",
+    icon: Mountain
+  },
+  transport: {
+    title: "Transport",
+    text: "Materialflöden och massor flyttas med tydlig planering så arbetsplatsen håller rytmen.",
+    image: "/projects/transport.png",
+    icon: Route
   }
+} satisfies Record<string, Job>;
+
+const winterJobs: Job[] = [
+  jobCatalog.snowPlowing,
+  jobCatalog.sanding,
+  jobCatalog.snowTransport,
+  jobCatalog.grading,
+  jobCatalog.winterReadiness
 ];
 
-const allJobs = [...winterJobs, ...springJobs, ...summerJobs, ...autumnJobs];
+const springJobs: Job[] = [
+  jobCatalog.sanding,
+  jobCatalog.snowTransport,
+  jobCatalog.sweeping
+];
+
+const summerJobs: Job[] = [
+  jobCatalog.driveways,
+  jobCatalog.drainage,
+  jobCatalog.earthworks,
+  jobCatalog.playgrounds,
+  jobCatalog.mowing,
+  jobCatalog.gravelSurfaces,
+  jobCatalog.transport
+];
+
+const autumnJobs: Job[] = [
+  jobCatalog.winterReadiness,
+  jobCatalog.gravelSurfaces,
+  jobCatalog.transport,
+  jobCatalog.sanding,
+  jobCatalog.earthworks
+];
+
+const allJobs = Object.values(jobCatalog);
 
 const seasons: Season[] = [
   {
@@ -150,7 +179,7 @@ const seasons: Season[] = [
     energy: 96,
     icon: Snowflake,
     image: "/projects/loader-front.jpeg",
-    summary: "Snabb vinterinsats i Boden med plogning, halkbekämpning och snötransport.",
+    summary: "Snabb vinterinsats i Boden med plogning, halkbekämpning, snötransport och beredskap.",
     jobs: winterJobs
   },
   {
@@ -160,8 +189,8 @@ const seasons: Season[] = [
     status: "planering",
     energy: 78,
     icon: Leaf,
-    image: "/projects/blade-cabin.jpeg",
-    summary: "När vintern släpper tar Brecab hand om sopning, grus och återställning.",
+    image: "/projects/sopning.png",
+    summary: "Vårens uppdrag samlar sandning, snötransport och sopning när vädret växlar.",
     jobs: springJobs
   },
   {
@@ -172,7 +201,7 @@ const seasons: Season[] = [
     energy: 88,
     icon: Sun,
     image: "/projects/loader-side.jpeg",
-    summary: "Säsongen för markanläggning, grusytor, gräsklippning och byggnation.",
+    summary: "Säsongen för infarter, dränering, markanläggning, grönytor, grusytor och transport.",
     jobs: summerJobs
   },
   {
@@ -183,7 +212,7 @@ const seasons: Season[] = [
     energy: 82,
     icon: Trees,
     image: "/projects/l60h-detail.jpeg",
-    summary: "Höstens fokus är förberedelse: ytor, bärlager och vinterklar logistik.",
+    summary: "Höstens fokus är vinterberedskap, grusytor, transport, sandning och markanläggning.",
     jobs: autumnJobs
   }
 ];
@@ -222,7 +251,7 @@ export function RadialSeasonServices() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-black text-white">
+    <section className="relative overflow-hidden bg-background text-foreground">
       <div className="absolute inset-0">
         <Image
           src={activeSeason.image}
@@ -230,10 +259,10 @@ export function RadialSeasonServices() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-28 transition duration-700"
+          className="object-cover opacity-15 transition duration-700"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(0,194,255,.24),transparent_31%),linear-gradient(180deg,rgba(0,0,0,.58),#020608_88%)]" />
-        <div className="absolute inset-0 industrial-grid opacity-25" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(0,194,255,.12),transparent_31%),linear-gradient(180deg,rgba(255,255,255,.86),rgba(248,251,252,.96)_88%)]" />
+        <div className="absolute inset-0 industrial-grid opacity-45" />
       </div>
 
       <div className="relative mx-auto grid min-h-[720px] max-w-7xl items-center gap-10 px-4 py-24 lg:grid-cols-[0.9fr_1.1fr]">
@@ -244,7 +273,7 @@ export function RadialSeasonServices() {
           <h1 className="mt-5 font-display text-5xl font-bold leading-none sm:text-7xl">
             Välj säsong. Se vad Brecab kan göra.
           </h1>
-          <p className="mt-6 text-base leading-8 text-white/72">
+          <p className="mt-6 text-base leading-8 text-muted-foreground">
             Klicka på en årstid i orbitalen. Jobben under uppdateras direkt med
             relevanta tjänster, bilder och kort förklaring. Välj Alla för att se hela utbudet.
           </p>
@@ -255,7 +284,7 @@ export function RadialSeasonServices() {
                 variant={season.id === activeId ? "default" : "outline"}
                 size="sm"
                 onClick={() => selectSeason(season, index)}
-                className="border-white/15"
+                className={season.id === activeId ? undefined : "border-border bg-background/80"}
               >
                 {season.title}
               </Button>
@@ -269,7 +298,7 @@ export function RadialSeasonServices() {
             onMouseEnter={() => setAutoRotate(false)}
             onMouseLeave={() => setAutoRotate(true)}
           >
-            <div className="absolute h-[390px] w-[390px] rounded-full border border-white/10" />
+            <div className="absolute h-[390px] w-[390px] rounded-full border border-border" />
             <div className="absolute h-[290px] w-[290px] rounded-full border border-primary/20" />
             <div className="absolute flex h-28 w-28 items-center justify-center rounded-full border border-primary/40 bg-primary/15 shadow-glow backdrop-blur-xl">
               <Zap className="text-primary" size={34} />
@@ -279,8 +308,8 @@ export function RadialSeasonServices() {
               const angle = ((index / seasons.length) * 360 + rotationAngle) % 360;
               const radian = (angle * Math.PI) / 180;
               const radius = 195;
-              const x = radius * Math.cos(radian);
-              const y = radius * Math.sin(radian);
+              const x = (radius * Math.cos(radian)).toFixed(3);
+              const y = (radius * Math.sin(radian)).toFixed(3);
               const isActive = season.id === activeId;
               const Icon = season.icon;
 
@@ -297,12 +326,12 @@ export function RadialSeasonServices() {
                       "flex h-16 w-16 items-center justify-center rounded-full border-2 backdrop-blur-xl transition duration-300",
                       isActive
                         ? "scale-125 border-primary bg-primary text-primary-foreground shadow-glow"
-                        : "border-white/35 bg-black/55 text-white hover:border-primary"
+                        : "border-border bg-background/85 text-foreground hover:border-primary"
                     )}
                   >
                     <Icon size={24} />
                   </span>
-                  <span className={cn("text-sm font-bold", isActive ? "text-primary" : "text-white/70")}>
+                  <span className={cn("text-sm font-bold", isActive ? "text-primary" : "text-muted-foreground")}>
                     {season.title}
                   </span>
                 </button>
@@ -310,19 +339,19 @@ export function RadialSeasonServices() {
             })}
           </div>
 
-          <Card className="mx-auto mt-6 w-full max-w-[520px] border-white/15 bg-black/70 text-white shadow-machine backdrop-blur-xl">
+          <Card className="mx-auto mt-6 w-full max-w-[520px] border-border bg-card/90 text-card-foreground shadow-machine backdrop-blur-xl">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between gap-3">
-                <Badge variant="outline" className="border-white/25 text-white">
+                <Badge variant="outline" className="border-border text-foreground">
                   {statusLabel[activeSeason.status]}
                 </Badge>
-                <span className="font-mono text-xs text-white/50">{activeSeason.period}</span>
+                <span className="font-mono text-xs text-muted-foreground">{activeSeason.period}</span>
               </div>
               <CardTitle className="mt-3 text-2xl">{activeSeason.title}</CardTitle>
             </CardHeader>
-            <CardContent className="text-sm leading-7 text-white/72">
+            <CardContent className="text-sm leading-7 text-muted-foreground">
               <p>{activeSeason.summary}</p>
-              <div className="mt-5 h-1 overflow-hidden rounded-full bg-white/10">
+              <div className="mt-5 h-1 overflow-hidden rounded-full bg-muted">
                 <div
                   className="h-full bg-gradient-to-r from-primary to-secondary"
                   style={{ width: `${activeSeason.energy}%` }}
@@ -340,7 +369,7 @@ export function RadialSeasonServices() {
               key={job.title}
               href="/contact"
               aria-label={`Planera uppdrag for ${job.title}`}
-              className="hover-card-3d group block overflow-hidden rounded-md border border-white/10 bg-white/[0.04] backdrop-blur"
+              className="hover-card-3d group block overflow-hidden rounded-md border border-border bg-card backdrop-blur"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
@@ -350,12 +379,12 @@ export function RadialSeasonServices() {
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
                 <job.icon className="absolute bottom-4 left-4 text-primary" size={26} />
               </div>
               <div className="p-5">
                 <h3 className="font-display text-2xl font-bold">{job.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/65">{job.text}</p>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{job.text}</p>
                 <div className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
                   Planera uppdrag <ArrowRight size={16} />
                 </div>

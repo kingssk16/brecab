@@ -44,10 +44,20 @@ export function SiteFooter() {
               <Mail size={17} className="shrink-0 text-primary" />
               info@brecab.se
             </p>
-            <p className="flex items-center gap-3">
+            <a
+              href="tel:+46702532035"
+              className="flex items-center gap-3 transition hover:text-primary"
+            >
               <Phone size={17} className="shrink-0 text-primary" />
-              Rådgivning och offert
-            </p>
+              Anders Eriksson, +46 70-253 20 35
+            </a>
+            <a
+              href="tel:+46705466968"
+              className="flex items-center gap-3 transition hover:text-primary"
+            >
+              <Phone size={17} className="shrink-0 text-primary" />
+              Peter Eriksson, +46 70-546 69 68
+            </a>
             <p className="flex items-center gap-3">
               <MapPin size={17} className="shrink-0 text-primary" />
               Boden

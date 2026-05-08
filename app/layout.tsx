@@ -35,7 +35,9 @@ export const metadata: Metadata = {
     images: ["/projects/loader-side.jpeg"]
   },
   icons: {
-    icon: "/brecab-logo.png"
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/brecab-logo.png"
   }
 };
 
@@ -45,7 +47,12 @@ export default function RootLayout({
   return (
     <html lang="sv" suppressHydrationWarning>
       <body className={`${inter.variable} ${space.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          storageKey="brecab-theme"
+        >
           <ParallaxBackdrop />
           <Navigation />
           {children}
