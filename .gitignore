@@ -5,3 +5,7 @@ dist
 public/video
 .env*.local
 *.tsbuildinfo
+.vercel
+.sites-runtime
+
+.vercel

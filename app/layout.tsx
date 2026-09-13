@@ -1,65 +1,49 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
-
-import { Navigation } from "@/components/navigation";
-import { ParallaxBackdrop } from "@/components/parallax-backdrop";
-import { ScrollReveal } from "@/components/scroll-reveal";
-import { SiteFooter } from "@/components/site-footer";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Manrope, Barlow_Condensed } from "next/font/google";
+import { Header, Footer } from "@/components/brecab-shell";
 import "./globals.css";
-
-const inter = Inter({
+const body = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap"
+  variable: "--font-body",
+  display: "swap",
 });
-
-const space = Space_Grotesk({
+const display = Barlow_Condensed({
   subsets: ["latin"],
-  variable: "--font-space",
-  display: "swap"
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
 });
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://brecab.se"),
+  metadataBase: new URL("https://brecab.vercel.app"),
   title: {
-    default: "Brecab | Markarbete, maskintjänster och transport",
-    template: "%s | Brecab"
+    default: "BRECAB – Markarbete & snöröjning i Boden",
+    template: "%s | BRECAB i Boden",
   },
   description:
-    "Brecab levererar markarbete, maskintjänster, snöröjning och transport med modern maskinpark i Boden.",
+    "Maskin- och markentreprenad i Boden. BRECAB hjälper privatpersoner, företag, bostadsrättsföreningar och offentlig verksamhet med markarbeten, snöröjning och yttre skötsel.",
   openGraph: {
-    title: "Brecab",
-    description:
-      "Premium entreprenad, maskintjänster och transport i Boden.",
-    images: ["/projects/loader-side.jpeg"]
+    locale: "sv_SE",
+    type: "website",
+    siteName: "BRECAB",
+    title: "BRECAB – Vi gör jobbet. Året runt.",
+    description: "Markarbete, vinterunderhåll och yttre skötsel i Boden.",
+    images: ["/projects/loader-side.jpeg"],
   },
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/brecab-logo.png"
-  }
+  icons: { icon: "/favicon.svg" },
+  alternates: { canonical: "/" },
 };
-
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="sv" suppressHydrationWarning>
-      <body className={`${inter.variable} ${space.variable} font-sans`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-          storageKey="brecab-theme"
-        >
-          <ParallaxBackdrop />
-          <Navigation />
-          {children}
-          <ScrollReveal>
-            <SiteFooter />
-          </ScrollReveal>
-        </ThemeProvider>
+    <html lang="sv">
+      <body className={`${body.variable} ${display.variable}`}>
+        <a href="#main" className="skip-link">
+          Hoppa till innehållet
+        </a>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );
