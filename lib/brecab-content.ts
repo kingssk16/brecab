@@ -9,8 +9,8 @@ export const services = [
     slug: "markanlaggning",
     title: "Markanläggning",
     group: "mark",
-    image: "markanlaggning.png",
-    alt: "Grävmaskin på en yta som förbereds för anläggning",
+    image: "markanlaggning-hjullastare.png",
+    alt: "Hjullastare som arbetar med marken intill ett flerbostadshus",
     intro: "Från befintlig mark till en utemiljö som fungerar i vardagen.",
     detail:
       "Vi hjälper till med markarbeten för både små och stora uppdrag. Arbetets omfattning planeras utifrån platsen och hur ytan ska användas. Gräsytor, grusytor, utgrävningar och anslutande anläggningsarbeten kan ingå i ett samlat åtagande.",
@@ -21,8 +21,8 @@ export const services = [
     slug: "garageinfarter",
     title: "Garageinfarter",
     group: "mark",
-    image: "uppfart.png",
-    alt: "Kompakt grävmaskin vid en garageinfart",
+    image: "markanlaggning.png",
+    alt: "Grävmaskin som förbereder marken vid en infart",
     intro: "En genomtänkt infart börjar med arbetet under ytan.",
     detail:
       "Vi utför ombyggnad och urgrävning av garageinfarter. Tillsammans går vi igenom hur infarten ska användas och vilka förutsättningar som finns, så att arbetet kan planeras från utgrävning till färdig yta.",
@@ -81,8 +81,8 @@ export const services = [
     slug: "plattlaggning-kantsten",
     title: "Plattläggning & kantsten",
     group: "mark",
-    image: "grusytor.png",
-    alt: "Exempel på en ordnad utemiljö med infart",
+    image: "plattlaggning.png",
+    alt: "Stenlagd uppfart med trappor och stödmurar framför ett hus",
     intro: "Tydliga avslut och ytor som knyter ihop utemiljön.",
     detail:
       "Plattläggning och kantstensläggning ingår i våra tjänster. Vi hjälper dig att diskutera utförandet för gångar, uppfarter och andra markytor, både som enskilt uppdrag och som del av ett större anläggningsarbete.",

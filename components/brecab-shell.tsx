@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X, MapPin, ArrowRight } from "lucide-react";
+import { ArrowUpRight, Menu, X, MapPin, ArrowRight, Phone } from "lucide-react";
 export function Wordmark() {
   return (
     <span className="brand-logo">
@@ -101,11 +101,7 @@ export function Footer() {
             <Link href="/" aria-label="BRECAB – startsida">
               <Wordmark />
             </Link>
-            <p>
-              Marken under fötterna.
-              <br />
-              Tryggheten i att jobbet blir gjort.
-            </p>
+            <p>Tryggheten i att jobbet blir gjort.</p>
             <span className="footer-location">
               <MapPin size={16} /> Boden, Norrbotten
             </span>
@@ -124,6 +120,9 @@ export function Footer() {
             <Link className="footer-email" href="mailto:info@brecab.se">
               info@brecab.se <ArrowUpRight size={20} />
             </Link>
+            <a className="footer-email" href="tel:+46706602076">
+              070-6602076 <Phone size={20} aria-hidden="true" />
+            </a>
             <Link className="text-link" href="/kontakt">
               Till kontaktsidan <ArrowRight size={17} />
             </Link>

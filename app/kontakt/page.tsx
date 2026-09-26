@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 import { PageIntro, Eyebrow } from "@/components/brecab-ui";
 import { InquiryForm } from "@/components/brecab-inquiry";
 import { services } from "@/lib/brecab-content";
@@ -39,13 +39,18 @@ export default async function Contact({
               GÖRA FÖR DIG?
             </h2>
             <p>
-              Skicka ett mejl och berätta vad du behöver hjälp med. Ju mer vi
+              Ring eller skicka ett mejl och berätta vad du behöver hjälp med. Ju mer vi
               vet om platsen och arbetet, desto bättre kan vi diskutera en
               lösning.
             </p>
-            <a className="contact-email" href="mailto:info@brecab.se">
-              info@brecab.se <ArrowUpRight size={28} />
-            </a>
+            <div className="contact-links">
+              <a className="contact-email" href="tel:+46706602076">
+                070-6602076 <Phone size={26} aria-hidden="true" />
+              </a>
+              <a className="contact-email" href="mailto:info@brecab.se">
+                info@brecab.se <ArrowUpRight size={28} />
+              </a>
+            </div>
             <div className="contact-facts">
               <div>
                 <span>HÄR FINNS VI</span>Boden, Norrbotten

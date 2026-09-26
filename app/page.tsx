@@ -23,6 +23,7 @@ export default function Home() {
             name: "BRECAB",
             url: "https://brecab.vercel.app",
             email: "info@brecab.se",
+            telephone: "+46706602076",
             logo: "https://brecab.vercel.app/brecab-official-logo.png",
             areaServed: { "@type": "City", name: "Boden" },
             description:
@@ -70,8 +71,6 @@ export default function Home() {
               </span>{" "}
               Upptäck vad vi kan göra
             </a>
-            <span>MARK. MASKIN. MÄNNISKOR.</span>
-            <span>01 / BODEN</span>
           </div>
         </div>
       </section>
@@ -116,8 +115,8 @@ export default function Home() {
               number="01"
               title="Mark & anläggning"
               text="Ett ordentligt grundarbete gör skillnad. Från dränering och garageinfarter till färdiga gräs- och grusytor."
-              image="/projects/markanlaggning.png"
-              alt="Grävmaskin som förbereder mark vid ett anläggningsarbete"
+              image="/projects/markanlaggning-hjullastare.png"
+              alt="Hjullastare som arbetar med marken intill ett flerbostadshus"
               href="/tjanster#mark"
             />
             <ServiceFeature

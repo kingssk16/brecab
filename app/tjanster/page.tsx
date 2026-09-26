@@ -13,7 +13,7 @@ export default function Services() {
       <PageIntro
         label="Våra tjänster"
         title={"MARKEN ÄR VÅRT JOBB.\nBEHOVET ÄR DITT."}
-        text="Från en enskild insats till ett samlat entreprenadåtagande. Här hittar du det vi kan hjälpa dig med i Boden, under hela året."
+        text="Här hittar du det vi kan hjälpa dig med."
       />
       <ServiceCatalog />
       <ContactBand />
