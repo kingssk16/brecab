@@ -1,16 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro, ContactBand } from "@/components/brecab-ui";
-export const metadata: Metadata = {
-  title: "Miljö, hälsa & säkerhet",
-  description:
-    "Läs Brecabs miljöpolicy och miljöarbete: resurshushållning, arbetsmiljö, säkerhet och ständiga förbättringar för en långsiktigt hållbar utveckling.",
-  alternates: { canonical: "/miljo" },
-};
+import { mainPageSeo, pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata("/miljo", mainPageSeo["/miljo"]);
 export default function Environment() {
   return (
     <main id="main">
       <PageIntro
+        path="/miljo"
         label="Miljö"
         title={"VI JOBBAR HÄR.\nVI BRYR OSS OM HÄR."}
         text="Hälsa, säkerhet och omtanke om miljön är naturliga delar av vårt sätt att arbeta. Vårt miljöarbete omfattar hela verksamheten."

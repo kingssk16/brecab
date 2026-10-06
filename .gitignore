@@ -7,5 +7,6 @@ public/video
 *.tsbuildinfo
 .vercel
 .sites-runtime
+review/
 
 .vercel

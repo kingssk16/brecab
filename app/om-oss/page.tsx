@@ -1,18 +1,14 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageIntro, ContactBand, Eyebrow } from "@/components/brecab-ui";
-export const metadata: Metadata = {
-  title: "Om Brecab",
-  description:
-    "BRECAB är ett entreprenadföretag inom maskin och markanläggning i Boden. Vi ser entreprenadskapet som ett helhetsåtagande – för stora och små kunder.",
-  alternates: { canonical: "/om-oss" },
-};
+import { mainPageSeo, pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata("/om-oss", mainPageSeo["/om-oss"]);
 export default function About() {
   return (
     <main id="main">
       <PageIntro
+        path="/om-oss"
         label="Om Brecab"
         title={"VI STÄRKER DIN\nSVAGASTE LÄNK."}
         text="Vi är BRECAB. Ett entreprenadföretag inom maskin och markanläggning, hemma i Boden. Vi gör jobbet åt dig."

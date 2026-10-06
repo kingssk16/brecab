@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { StructuredData } from "@/components/structured-data";
+import { breadcrumbData } from "@/lib/seo";
 export function Eyebrow({
   children,
   light = false,
@@ -44,19 +46,22 @@ export function PageIntro({
   label,
   title,
   text,
+  path,
 }: {
   label: string;
   title: string;
   text: string;
+  path: string;
 }) {
   return (
     <section className="page-intro">
+      <StructuredData data={breadcrumbData([{ name: "Hem", path: "/" }, { name: label, path }])} />
       <div className="container">
-        <div className="breadcrumb">
+        <nav className="breadcrumb" aria-label="Brödsmulor">
           <Link href="/">Hem</Link>
-          <span>/</span>
-          <span>{label}</span>
-        </div>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{label}</span>
+        </nav>
         <Eyebrow>{label}</Eyebrow>
         <h1>{title}</h1>
         <p className="intro-description">{text}</p>

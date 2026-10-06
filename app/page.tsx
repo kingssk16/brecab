@@ -11,26 +11,11 @@ import {
   Sprout,
 } from "lucide-react";
 import { ContactBand, Eyebrow, ServiceFeature } from "@/components/brecab-ui";
+import { mainPageSeo, pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata("/", mainPageSeo["/"]);
 export default function Home() {
   return (
     <main id="main">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "BRECAB",
-            url: "https://brecab.vercel.app",
-            email: "info@brecab.se",
-            telephone: "+46706602076",
-            logo: "https://brecab.vercel.app/brecab-official-logo.png",
-            areaServed: { "@type": "City", name: "Boden" },
-            description:
-              "Maskin- och markentreprenad i Boden. Markarbeten, vinterunderhåll, yttre skötsel och transport.",
-          }),
-        }}
-      />
       <section className="hero">
         <Image
           className="hero-photo"
@@ -46,14 +31,14 @@ export default function Home() {
           <div className="hero-copy">
             <Eyebrow light>DIN ENTREPRENÖR I BODEN</Eyebrow>
             <h1>
-              VI GÖR JOBBET.
+              MARKARBETE.
               <br />
-              <span>ÅRET RUNT.</span>
+              <span>SNÖRÖJNING.</span>
+              <span className="hero-location">I BODEN. ÅRET RUNT.</span>
             </h1>
             <p>
-              Från första spadtaget till vinterns sista snöfall.
-              <br className="desktop-break" /> Vi tar hand om marken, så att du
-              kan fokusera på ditt.
+              Brecab hjälper dig med markarbete, snöröjning och yttre skötsel i Boden.
+              Från första spadtaget till vinterns sista snöfall – vi gör jobbet åt dig.
             </p>
             <div className="hero-actions">
               <Link href="/kontakt" className="button button-brand">
@@ -96,8 +81,8 @@ export default function Home() {
             <div>
               <Eyebrow>DET HÄR KAN VI HJÄLPA DIG MED</Eyebrow>
               <h2>
-                RÄTT HJÄLP.
-                <br />I ALLA SÄSONGER.
+              MARKENTREPRENAD.
+              <br />I ALLA SÄSONGER.
               </h2>
             </div>
             <div className="heading-aside">
@@ -261,6 +246,29 @@ export default function Home() {
               </h3>
               <p>Vårt arbete för hälsa, säkerhet och miljö.</p>
             </Link>
+          </div>
+        </div>
+      </section>
+      <section className="faq-section">
+        <div className="container faq-grid">
+          <div>
+            <Eyebrow>DIN ENTREPRENÖR I BODEN</Eyebrow>
+            <h2>VAD BEHÖVER DU HJÄLP MED?</h2>
+            <p className="faq-intro">Vi hjälper privatpersoner, företag, bostadsrättsföreningar, kommuner och regioner med stora och små uppdrag.</p>
+          </div>
+          <div className="faq-list">
+            <details>
+              <summary>Vilka markarbeten utför Brecab?</summary>
+              <p>Vi hjälper med <Link href="/tjanster/markanlaggning">markanläggning</Link>, <Link href="/tjanster/dranering">dränering</Link>, <Link href="/tjanster/garageinfarter">garageinfarter</Link>, <Link href="/tjanster/plattlaggning-kantsten">plattläggning och kantsten</Link>, samt gräsytor, grusytor, utgrävning och isolering. Arbetet planeras efter platsen och hur ytan ska användas.</p>
+            </details>
+            <details>
+              <summary>Kan ni hjälpa med snöröjning och sandning?</summary>
+              <p>Ja. Vi utför <Link href="/tjanster/snoplogning">snöplogning och snöskottning</Link>, <Link href="/tjanster/halkbekampning">halkbekämpning och sandning</Link> samt <Link href="/tjanster/snotransport">snötransport</Link>. Tillsammans går vi igenom vilka ytor som ska skötas och vad som ska ingå i vinterunderhållet.</p>
+            </details>
+            <details>
+              <summary>Hur får jag ett kostnadsförslag?</summary>
+              <p>Ring <a href="tel:+46706602076">070-6602076</a> eller <Link href="/kontakt">berätta om ditt uppdrag</Link>. Ange var arbetet ska utföras, ungefärlig omfattning och önskad tidpunkt, så diskuterar vi behov och förutsättningar med dig.</p>
+            </details>
           </div>
         </div>
       </section>

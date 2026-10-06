@@ -5,6 +5,9 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { services, groups } from "@/lib/brecab-content";
 import { ContactBand, Eyebrow } from "@/components/brecab-ui";
+import { StructuredData } from "@/components/structured-data";
+import { ServiceFaq } from "@/components/service-faq";
+import { breadcrumbData, serviceData, serviceMetadata, serviceSeo } from "@/lib/seo";
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
@@ -15,20 +18,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const s = services.find((s) => s.slug === slug);
-  return {
-    title: s?.title || "Tjänsten hittades inte",
-    description: s
-      ? `${s.intro} ${s.title} i Boden med BRECAB. Kontakta oss för rådgivning och kostnadsförslag.`
-      : undefined,
-    alternates: { canonical: `/tjanster/${slug}` },
-    openGraph: s
-      ? {
-          title: `${s.title} | BRECAB i Boden`,
-          description: s.intro,
-          images: [{ url: `/projects/${s.image}`, alt: s.alt }],
-        }
-      : undefined,
-  };
+  if (!s) notFound();
+  return serviceMetadata(s);
 }
 export default async function ServicePage({
   params,
@@ -39,17 +30,22 @@ export default async function ServicePage({
   const s = services.find((s) => s.slug === slug);
   if (!s) notFound();
   const group = groups.find((g) => g.id === s.group)!;
+  const related = services.filter((item) => item.group === s.group && item.slug !== s.slug);
   return (
     <main id="main">
+      <StructuredData data={serviceData(s)} />
+      <StructuredData data={breadcrumbData([{ name: "Hem", path: "/" }, { name: "Tjänster", path: "/tjanster" }, { name: s.title, path: `/tjanster/${s.slug}` }])} />
       <section className="detail-hero">
         <div>
-          <div className="breadcrumb">
+          <nav className="breadcrumb" aria-label="Brödsmulor">
             <Link href="/">Hem</Link>
             <span>/</span>
             <Link href="/tjanster">Tjänster</Link>
-          </div>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{s.title}</span>
+          </nav>
           <Eyebrow>{group.title}</Eyebrow>
-          <h1>{s.title.toLocaleUpperCase("sv")}</h1>
+          <h1>{serviceSeo[s.slug].heading.toLocaleUpperCase("sv")}</h1>
           <p>{s.intro}</p>
           <Link
             href={`/kontakt?tjanst=${s.slug}`}
@@ -76,7 +72,7 @@ export default async function ServicePage({
             <h2>SÅ KAN VI HJÄLPA DIG.</h2>
             <p>{s.detail}</p>
             <p>
-              Vi arbetar åt privatpersoner, företag, bostadsrättsföreningar,
+              Vi arbetar i Boden åt privatpersoner, företag, bostadsrättsföreningar,
               kommuner och regioner. Kontakta oss för personlig rådgivning och
               ett kostnadsförslag.
             </p>
@@ -94,6 +90,24 @@ export default async function ServicePage({
           </aside>
         </div>
       </section>
+      <ServiceFaq service={s} />
+      {related.length > 0 ? (
+        <section className="section">
+          <div className="container">
+            <div className="related-heading">
+              <Eyebrow>PLANERA HELA UPPDRAGET</Eyebrow>
+              <h2>FLER TJÄNSTER INOM {group.title.toLocaleUpperCase("sv")}.</h2>
+            </div>
+            <ul className="related-services">
+              {related.map((item) => (
+                <li key={item.slug}>
+                  <Link href={`/tjanster/${item.slug}`}><span>{item.title}</span><ArrowUpRight size={20} aria-hidden="true" /></Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
       <ContactBand />
     </main>
   );

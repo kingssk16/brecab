@@ -1,0 +1,4 @@
+review/
+scripts/seo-preview.template.html
+scripts/seo-review.mjs
+scripts/serve-seo-review.mjs

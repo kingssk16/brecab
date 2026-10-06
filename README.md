@@ -24,4 +24,10 @@ Den officiella loggan är användarens oförändrade PNG i `public/brecab-offici
 
 ## Publicering
 
-Använd det befintliga Vercel-projektet `brecab`. Kontrollera länkningen med `vercel link --project brecab`, bygg och publicera med `vercel --prod`. Den kanoniska adressen är tills vidare https://brecab.vercel.app. När brecab.se kopplas till den nya sidan ändras metadataBase, sitemap och robots till den domänen.
+Använd det befintliga Vercel-projektet `brecab`. Kontrollera den befintliga länkningen med `vercel project inspect --non-interactive`, bygg och publicera med `vercel --prod`. Den kanoniska adressen är tills vidare https://brecab.vercel.app. När brecab.se kopplas till den nya sidan uppdateras `siteUrl` i `lib/seo.ts`, som används av metadata, sitemap, robots och strukturerade data.
+
+## SEO och granskning
+
+Alla 22 innehållssidor har egna sidtitlar, metabeskrivningar, canonical-adresser och delningskort. `lib/seo.ts` samlar innehållet och de gemensamma företagsuppgifterna. Tjänstesidorna har även Service-data, BreadcrumbList, vanliga frågor och länkar till andra tjänster i samma kategori. Organization används för företagsuppgifterna eftersom en fullständig besöksadress inte är bekräftad. FAQ-innehållet är till för besökare; inget löfte om särskilda FAQ-sökresultat görs.
+
+Bygg med `npm run build` och starta lokalt på port 3001: `npm run start -- --hostname 127.0.0.1 --port 3001`. Kör `node scripts/seo-review.mjs` för att kontrollera den renderade SEO-informationen, omdirigeringarna och 404-hanteringen. Skriptet jämför med den publicerade webbplatsen och skapar `review/seo-preview.html`. `node scripts/serve-seo-review.mjs` visar granskningen på http://127.0.0.1:3002. Granskningsfilerna ingår inte i Vercel-publiceringen.

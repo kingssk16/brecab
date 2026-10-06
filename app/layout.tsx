@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope, Barlow_Condensed } from "next/font/google";
 import { Header, Footer } from "@/components/brecab-shell";
+import { StructuredData } from "@/components/structured-data";
+import { mainPageSeo, organisationData, siteUrl, websiteData } from "@/lib/seo";
 import "./globals.css";
 const body = Manrope({
   subsets: ["latin"],
@@ -14,20 +16,24 @@ const display = Barlow_Condensed({
   display: "swap",
 });
 export const metadata: Metadata = {
-  metadataBase: new URL("https://brecab.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "BRECAB – Markarbete & snöröjning i Boden",
-    template: "%s | BRECAB i Boden",
+    default: mainPageSeo["/"].title,
+    template: "%s | BRECAB",
   },
-  description:
-    "Maskin- och markentreprenad i Boden. BRECAB hjälper privatpersoner, företag, bostadsrättsföreningar och offentlig verksamhet med markarbeten, snöröjning och yttre skötsel.",
+  description: mainPageSeo["/"].description,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
   openGraph: {
     locale: "sv_SE",
     type: "website",
     siteName: "BRECAB",
-    title: "BRECAB – Vi gör jobbet. Året runt.",
-    description: "Markarbete, vinterunderhåll och yttre skötsel i Boden.",
-    images: ["/projects/loader-side.jpeg"],
+    title: mainPageSeo["/"].title,
+    description: mainPageSeo["/"].description,
+    images: [{ url: "/projects/loader-side.jpeg", alt: "Brecabs hjullastare med snöplog" }],
   },
   icons: { icon: "/favicon.svg" },
   alternates: { canonical: "/" },
@@ -38,6 +44,8 @@ export default function RootLayout({
   return (
     <html lang="sv">
       <body className={`${body.variable} ${display.variable}`}>
+        <StructuredData data={organisationData} />
+        <StructuredData data={websiteData} />
         <a href="#main" className="skip-link">
           Hoppa till innehållet
         </a>

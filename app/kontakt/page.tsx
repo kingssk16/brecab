@@ -1,14 +1,9 @@
-import type { Metadata } from "next";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { PageIntro, Eyebrow } from "@/components/brecab-ui";
 import { InquiryForm } from "@/components/brecab-inquiry";
 import { services } from "@/lib/brecab-content";
-export const metadata: Metadata = {
-  title: "Kontakta oss",
-  description:
-    "Kontakta BRECAB i Boden för personlig rådgivning och kostnadsförslag. Mejla info@brecab.se om ditt markarbete, vinterunderhåll eller skötseluppdrag.",
-  alternates: { canonical: "/kontakt" },
-};
+import { mainPageSeo, pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata("/kontakt", mainPageSeo["/kontakt"]);
 export default async function Contact({
   searchParams,
 }: {
@@ -25,6 +20,7 @@ export default async function Contact({
   return (
     <main id="main">
       <PageIntro
+        path="/kontakt"
         label="Kontakta oss"
         title={"ETT BRA JOBB BÖRJAR\nMED ETT SAMTAL."}
         text="Stora planer eller ett litet jobb? Hör av dig för personlig rådgivning, ett kostnadsförslag eller en diskussion om dina behov."

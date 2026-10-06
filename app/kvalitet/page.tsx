@@ -1,16 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro, ContactBand } from "@/components/brecab-ui";
-export const metadata: Metadata = {
-  title: "Kvalitet & vårt arbetssätt",
-  description:
-    "Brecabs kvalitetspolicy och kvalitetsarbete. Gemensamt ansvar, säkra förhållanden och ständig förbättring för rätt kvalitet i varje uppdrag.",
-  alternates: { canonical: "/kvalitet" },
-};
+import { mainPageSeo, pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata("/kvalitet", mainPageSeo["/kvalitet"]);
 export default function Quality() {
   return (
     <main id="main">
       <PageIntro
+        path="/kvalitet"
         label="Kvalitet"
         title={"ETT VÄL UTFÖRT JOBB.\nI VARJE LED."}
         text="Kvalitet är ett gemensamt ansvar. Från planering och ledarskap till den som utför arbetet på plats."
